@@ -24,8 +24,13 @@
 						<div class="form-group">
 							<input type="password" class="form-control" name="password" placeholder="{{ trans('hifone.login.password') }}">
 						</div>
+<<<<<<< HEAD
 						@if(!$site_captcha_login_disabled)
 						@include('partials.captcha')
+=======
+						@if(!$captcha_login_disabled)
+							@include('partials.captcha')
+>>>>>>> Hifone/1.0
 						@endif
 						<div class="form-group checkbox">
 							<label for="remember_me">

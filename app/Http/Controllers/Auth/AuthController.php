@@ -61,6 +61,7 @@ class AuthController extends Controller
         $providers = Provider::orderBy('created_at', 'desc')->get();
 
         return $this->view('auth.login')
+            ->withCaptchaLoginDisabled(Config::get('setting.captcha_login_disabled'))
             ->withCaptcha(route('captcha', ['random' => time()]))
             ->withConnectData(Session::get('connect_data'))
             ->withProviders($providers)
@@ -82,6 +83,7 @@ class AuthController extends Controller
     public function postLogin()
     {
         $loginData = Input::only(['login', 'password', 'verifycode']);
+<<<<<<< HEAD
         if (!Config::get('setting.site_captcha_login_disabled')) {
             $verifycode = array_pull($loginData, 'verifycode');
             if ($verifycode != Session::get('phrase')) {
@@ -91,6 +93,17 @@ class AuthController extends Controller
                 ->withError(trans('hifone.captcha.failure'));
             }
         }
+=======
+
+        $verifycode = array_pull($loginData, 'verifycode');
+        if (!Config::get('setting.captcha_login_disabled') && $verifycode != Session::get('phrase')) {
+            // instructions if user phrase is good
+            return Redirect::to('auth/login')
+            ->withInput(Input::except('password'))
+            ->withError(trans('hifone.captcha.failure'));
+        }
+
+>>>>>>> Hifone/1.0
         // Login with username or email.
         $loginKey = Str::contains($loginData['login'], '@') ? 'email' : 'username';
         $loginData[$loginKey] = array_pull($loginData, 'login');
@@ -121,6 +134,7 @@ class AuthController extends Controller
         $connect_data = Session::get('connect_data');
 
         return $this->view('auth.register')
+            ->withCaptchaRegisterDisabled(Config::get('setting.captcha_register_disabled'))
             ->withCaptcha(route('captcha', ['random' => time()]))
             ->withConnectData($connect_data)
             ->withPageTitle(trans('dashboard.login.login'));
@@ -143,7 +157,12 @@ class AuthController extends Controller
         } else {
             $registerData = Input::only(['username', 'email', 'password', 'password_confirmation', 'verifycode']);
 
+<<<<<<< HEAD
             if ($registerData['verifycode'] != Session::get('phrase') && Config::get('setting.site_captcha_reg_disabled')) {
+=======
+            $verifycode = array_pull($registerData, 'verifycode');
+            if (!Config::get('setting.captcha_register_disabled') && $verifycode != Session::get('phrase')) {
+>>>>>>> Hifone/1.0
                 return Redirect::to('auth/register')
                     ->withTitle(sprintf('%s %s', trans('hifone.whoops'), trans('dashboard.users.add.failure')))
                     ->withInput(Input::all())
@@ -245,6 +264,7 @@ class AuthController extends Controller
 
             if (!Auth::check()) {
                 Auth::login($user, true);
+                event(new UserWasLoggedinEvent($user));
             }
 
             return Redirect::to('/')

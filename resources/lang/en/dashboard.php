@@ -248,8 +248,13 @@ return [
             'site_logo'                    => 'Site logo',
             'site_cdn'                     => 'CDN Address',
             'site_about'                   => 'About Us',
+<<<<<<< HEAD
             'site_captcha_login_disabled'  => 'Disable Captcha for Login',
             'site_captcha_reg_disabled'    => 'Disable Captcha for Registration',
+=======
+            'captcha_login_disabled'       => 'Disable Captcha for Login',
+            'captcha_register_disabled'    => 'Disable Captcha for Registration',
+>>>>>>> Hifone/1.0
             'logo'                         => 'Logo设置',
             'logo_help'                    => '推荐使用90*40大小的logo.',
         ],
