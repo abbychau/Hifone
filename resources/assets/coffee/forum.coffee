@@ -360,8 +360,8 @@ window.ForumView = Backbone.View.extend
         newContent = oldContent + '\n' + prefix
     else
       newContent = prefix
-    replyContent.focus().val(replyContent.val() + newContent)
-    return false
+    replyContent.focus()
+    replyContent.val newContent
 
   uploadAvatar: ->
     $('.upload-btn').on 'click', ->

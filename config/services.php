@@ -46,14 +46,6 @@ return [
         'client_secret' => env('GITLAB_SECRET'),
         'redirect'      => env('GITLAB_REDIRECT_URI'),
     ],
-<<<<<<< HEAD
-=======
-    'github' => [
-        'client_id'     => env('GITHUB_KEY'),
-        'client_secret' => env('GITHUB_SECRET'),
-        'redirect'      => env('GITHUB_REDIRECT_URI'),
-    ],
->>>>>>> Hifone/1.0
     'google' => [
         'client_id'     => env('GOOGLE_KEY'),
         'client_secret' => env('GOOGLE_SECRET'),

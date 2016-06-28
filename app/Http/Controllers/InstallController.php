@@ -207,13 +207,8 @@ class InstallController extends Controller
             $settings = array_pull($postData, 'settings');
 
             // Other Default Settings
-<<<<<<< HEAD
             $settings['site_captcha_login_disabled'] = '0';
             $settings['site_captcha_reg_disabled'] = '0';
-=======
-            $settings['captcha_login_disabled'] = '0';
-            $settings['captcha_register_disabled'] = '0';
->>>>>>> Hifone/1.0
 
             foreach ($settings as $settingName => $settingValue) {
                 $setting->set($settingName, $settingValue);

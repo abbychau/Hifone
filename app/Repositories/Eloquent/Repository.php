@@ -52,7 +52,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
         $this->makeModel();
     }
 
-    abstract protected function model($modelName = null);
+    abstract protected function model();
 
     /**
      * Creates instance of model.

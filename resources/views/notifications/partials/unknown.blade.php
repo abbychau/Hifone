@@ -7,7 +7,7 @@
   <div class="media-heading">
     unknown
   </div>
-    <div class="media-content summary markdown-reply">
+    <div class="media-content summary markdown">
       <span class="deleted text-center">{{ trans('hifone.notifications.deleted') }}</span>
     </div>
 

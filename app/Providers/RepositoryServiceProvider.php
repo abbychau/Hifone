@@ -11,20 +11,22 @@
 
 namespace Hifone\Providers;
 
-use Hifone\Services\Repository\Repository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
-     * Indicats if loading of the provider is deferred.
+     * Repositories to bind.
      *
-     * @var bool
+     * @var array
      */
-    protected $defer = true;
+    private $eloquent = [
+        'Thread',
+        'Tag',
+    ];
 
     /**
-     * Boot the repository provider.
+     * Bootstrap the application services.
      *
      * @return void
      */
@@ -34,26 +36,42 @@ class RepositoryServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the repository services.
+     * Register the application services.
      *
      * @return void
      */
     public function register()
     {
-        $this->app->singleton('repository', function ($app) {
-            return new Repository($app);
-        });
+        $this->bind('', $this->eloquent);
     }
 
     /**
-     * Get the services provided by the provider.
-     *
-     * @return array
+     * @param $folder
+     * @param $repositories
      */
-    public function provides()
+    private function bind($folder, $repositories)
     {
-        return [
-            'repository',
-        ];
+        if ($folder) {
+            $folder = '\\'.$folder;
+        }
+
+        foreach ($repositories as $key => $name) {
+            if (is_array($name)) {
+                $this->bind($key, $name);
+            } else {
+                $repository = "${name}Repository";
+
+                $this->app->bind(
+                    "Hifone\\Repositories\\Contracts$folder\\${repository}Interface",
+                    "Hifone\\Repositories\\Eloquent$folder\\$repository"
+                );
+                /*
+                $this->app->bind(
+                    $repository,
+                    "Hifone\\Repositories\\Eloquent$folder\\$repository"
+                );
+                */
+            }
+        }
     }
 }

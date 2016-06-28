@@ -123,17 +123,10 @@ class SeedCommand extends Command
                 'name'  => 'site_about',
                 'value' => 'This is the demo instance of [Hifone](https://hifone.com?ref=demo). The open source forum software.',
             ], [
-<<<<<<< HEAD
                 'name'  => 'site_captcha_reg_disabled',
                 'value' => '0',
             ], [
                 'name'  => 'site_captcha_login_disabled',
-=======
-                'name'  => 'captcha_register_disabled',
-                'value' => '0',
-            ], [
-                'name'  => 'captcha_login_disabled',
->>>>>>> Hifone/1.0
                 'value' => '0',
             ],
         ];

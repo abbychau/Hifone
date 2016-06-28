@@ -14,7 +14,7 @@
       {!! str_limit($notification->object->title, '100') !!}
     </a>
   </div>
-    <div class="media-content summary markdown-reply">
+    <div class="media-content summary markdown">
       {!! $notification->body !!}
     </div>
 

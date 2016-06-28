@@ -16,7 +16,7 @@
     </div>
 
     @if (count($notifications))
-	<div class="panel-body remove-padding-horizontal notification-index content-body">
+	<div class="panel-body remove-padding-horizontal notification-index">
 
 		<ul class="list-group row">
 			@foreach ($notifications as $day => $item)

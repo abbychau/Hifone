@@ -11,7 +11,7 @@
      •
     {{ $notification->labelUp }}
   </div>
-    <div class="media-content summary markdown-reply">
+    <div class="media-content summary markdown">
       {{ trans('hifone.credits.credits') }}: {{ $notification->object->rule->reward }}
     {!! $notification->body !!}
     </div>

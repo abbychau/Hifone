@@ -13,7 +13,7 @@ namespace Hifone\Services\Tag;
 
 use Hifone\Models\Tag;
 
-class AddTag
+class Addtag
 {
     /**
      * @param \Hifone\Models\Tag\TaggableInterface $taggable
